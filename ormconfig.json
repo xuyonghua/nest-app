@@ -1,0 +1,12 @@
+{
+  "type": "mongodb",
+  "host": "ds013162.mlab.com",
+  "port": 13162,
+  "username": "xuyonghua",
+  "password": "200904135072p",
+  "database": "deepbay",
+  "entities": [
+    "src/**/**.entity{.ts,.js}"
+  ],
+  "synchronize": true
+}
