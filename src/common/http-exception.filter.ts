@@ -19,10 +19,10 @@ export class HttpExceptionFilter implements ExceptionFilter {
       response
         .status(status)
         .json({
-          statusCode: exception.getStatus(),
+          code: exception.getStatus(),
           timestamp: new Date().toLocaleString(),
           path: request.url,
-          message: exception.message.error,
+          message: exception.message,
         });
     }
   }

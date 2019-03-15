@@ -9,10 +9,10 @@ export class AuthService {
   }
 
   async createToken(user: JwtPayload) {
-    const accessToken = this.jwtService.sign(user);
+    const token = this.jwtService.sign(user);
     return {
       expiresIn: 3600,
-      accessToken,
+      token,
     };
   }
 

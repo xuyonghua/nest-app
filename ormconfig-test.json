@@ -1,10 +1,10 @@
 {
   "type": "mongodb",
-  "host": "120.78.145.12",
-  "port": 27017,
+  "host": "ds013162.mlab.com",
+  "port": 13162,
   "username": "xuyonghua",
-  "password": "123456",
-  "database": "lottery",
+  "password": "200904135072p",
+  "database": "deepbay",
   "entities": [
     "src/**/**.entity{.ts,.js}"
   ],

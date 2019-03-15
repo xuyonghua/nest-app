@@ -1,9 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, ObjectIdColumn, ObjectID } from 'typeorm';
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @ObjectIdColumn()
+  id: ObjectID;
 
   @Column()
   account: string;
@@ -11,8 +11,11 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
-  name: string;
+  @Column({ default: '' })
+  nikeName: string;
+
+  @Column({ default: '' })
+  avatarUrl: string;
 
   @Column({
     default: 'regular',

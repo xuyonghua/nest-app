@@ -15,7 +15,7 @@ export class UserService implements OnModuleInit {
     const admin = this.userRepo.create({
       account: 'admin',
       password: this.cryptoUtil.encryptPassword('admin'),
-      name: '系统管理员',
+      nikeName: '系统管理员',
       role: 'admin',
     });
     await this.userRepo.save(admin);
@@ -32,7 +32,7 @@ export class UserService implements OnModuleInit {
    * @param account 登录账号
    * @param password 登录密码
    */
-  async login(account: string, password: string): Promise<void> {
+  async login(account: string, password: string): Promise<User> {
     const user = await this.findOneByAccount(account);
     if (!user) {
       throw new HttpException('登录账号有误', 406);
@@ -40,6 +40,7 @@ export class UserService implements OnModuleInit {
     if (!this.cryptoUtil.checkPassword(password, user.password)) {
       throw new HttpException('登录密码有误', 406);
     }
+    return user;
   }
 
   /**
@@ -53,7 +54,7 @@ export class UserService implements OnModuleInit {
       throw new HttpException('账号已存在', 409);
     }
     user.password = this.cryptoUtil.encryptPassword(user.password);
-    await this.userRepo.save(user);
+    await this.userRepo.save(this.userRepo.create(user));
   }
 
   /**
@@ -86,8 +87,8 @@ export class UserService implements OnModuleInit {
     if (updateInput.password) {
       existing.password = this.cryptoUtil.encryptPassword(updateInput.password);
     }
-    if (updateInput.name) {
-      existing.name = updateInput.name;
+    if (updateInput.nikeName) {
+      existing.nikeName = updateInput.nikeName;
     }
     await this.userRepo.save(existing);
   }

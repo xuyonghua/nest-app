@@ -8,7 +8,7 @@ import { Result } from '../../common/result.interface';
 import { Roles } from '../../common/roles.decorator';
 import { RolesGuard } from '../guards/roles.guard';
 
-@Controller('user')
+@Controller('api/user')
 export class UserController {
   constructor(
     @Inject(AuthService) private readonly authService: AuthService,
@@ -23,9 +23,15 @@ export class UserController {
    */
   @Post('login')
   async login(@Body() body: { account: string, password: string }): Promise<Result> {
-    await this.userService.login(body.account, body.password);
+    const user = await this.userService.login(body.account, body.password);
+    delete user.password;
     const accessToken = await this.authService.createToken({ account: body.account });
-    return { code: 200, message: '登录成功', data: accessToken };
+    return {
+      code: 200, message: '登录成功', data: {
+        userInfo: user,
+        accessToken,
+      },
+    };
   }
 
   @Post('register')
