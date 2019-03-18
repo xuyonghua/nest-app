@@ -11,7 +11,7 @@ async function bootstrap() {
   // app.setViewEngine('hbs');
 
   await app.listen(3389, '0.0.0.0', () => {
-    Logger.log('服务器启动成功');
+    Logger.log('Server is running at http://localhost:3389');
   });
 }
 

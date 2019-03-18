@@ -7,6 +7,7 @@ import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { ErrorsInterceptor } from './common/errors.interceptor';
 import { UserModule } from './auth/user/user.module';
 import { HttpExceptionFilter } from './common/http-exception.filter';
+import { PrizeModule } from './prize/prize.module';
 
 @Module({
   // imports: [TypeOrmModule.forRoot(), PhotoModule, UserModule],
@@ -21,7 +22,7 @@ import { HttpExceptionFilter } from './common/http-exception.filter';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    PhotoModule, UserModule,
+    PhotoModule, UserModule, PrizeModule,
   ],
   controllers: [AppController],
   providers: [
