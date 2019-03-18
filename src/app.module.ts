@@ -9,7 +9,20 @@ import { UserModule } from './auth/user/user.module';
 import { HttpExceptionFilter } from './common/http-exception.filter';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), PhotoModule, UserModule],
+  // imports: [TypeOrmModule.forRoot(), PhotoModule, UserModule],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: '120.78.145.12',
+      port: 3306,
+      username: 'root',
+      password: 'Root@1234',
+      database: 'lottery_dev',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,
+    }),
+    PhotoModule, UserModule,
+  ],
   controllers: [AppController],
   providers: [
     AppService,
