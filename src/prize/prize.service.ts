@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { Equal, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Prize } from './prize.entity';
@@ -44,4 +44,5 @@ export class PrizeService {
     const exist = await this.prizeRepository.findOne(id);
     return await this.prizeRepository.remove(exist);
   }
+
 }

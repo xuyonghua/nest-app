@@ -20,10 +20,10 @@ export class PrizeController {
     return { code: 200, message: '创建成功', data: response };
   }
 
-  @Post()
+  @Post('save')
   async save(@Body() prize: Prize) {
     const response = await this.prizeService.insertOrUpdate(prize);
-    return { code: 200, message: '创建成功', data: response };
+    return { code: 200, message: '保存成功', data: response };
   }
 
   @Put(':id')
@@ -34,7 +34,7 @@ export class PrizeController {
 
   @Get('prizeList')
   // @UseGuards(AuthGuard())
-  async photoList() {
+  async prizeList() {
     const response = await this.prizeService.findAll();
     return { code: 200, message: '查询成功', data: response };
   }

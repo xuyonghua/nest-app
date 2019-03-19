@@ -15,7 +15,7 @@ export class UserService implements OnModuleInit {
     const admin = this.userRepo.create({
       account: 'admin',
       password: this.cryptoUtil.encryptPassword('admin'),
-      nikeName: '系统管理员',
+      nikeName: 'admin',
       role: 'admin',
     });
     await this.userRepo.save(admin);

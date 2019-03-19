@@ -6,9 +6,14 @@ export class Prize {
 
   @Column() title: string;
 
-  @Column() description: string;
+  @Column({
+    default: '',
+  }) description: string;
 
-  @Column() price: number;
+  @Column({
+    default: 0,
+  })
+  price: number;
 
   @Column() quantity: number;
 }

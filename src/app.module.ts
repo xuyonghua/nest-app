@@ -8,6 +8,7 @@ import { ErrorsInterceptor } from './common/errors.interceptor';
 import { UserModule } from './auth/user/user.module';
 import { HttpExceptionFilter } from './common/http-exception.filter';
 import { PrizeModule } from './prize/prize.module';
+import { LotteryModule } from './lottery/lottery.module';
 
 @Module({
   // imports: [TypeOrmModule.forRoot(), PhotoModule, UserModule],
@@ -22,7 +23,7 @@ import { PrizeModule } from './prize/prize.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    PhotoModule, UserModule, PrizeModule,
+    PhotoModule, UserModule, PrizeModule, LotteryModule,
   ],
   controllers: [AppController],
   providers: [
