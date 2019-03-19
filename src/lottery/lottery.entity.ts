@@ -10,7 +10,9 @@ export class Lottery {
     { default: './assets/images/default-prize@3x.png' },
   ) banner: string;
   @Column() openType: number;
-  @Column() openDate: string;
+  @Column(
+    { default: '' },
+  ) openDate: string;
   @Column() openNumber: string;
   @Column() status: number;
   @Column() prizes: string;
